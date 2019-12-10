@@ -1,4 +1,4 @@
-package sample;
+package LPS_Niklas_Jordan_SMIB_E12;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

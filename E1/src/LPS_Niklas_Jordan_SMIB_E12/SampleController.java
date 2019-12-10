@@ -1,4 +1,4 @@
-package sample;
+package LPS_Niklas_Jordan_SMIB_E12;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
