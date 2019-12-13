@@ -22,12 +22,16 @@ public class Main extends Application{
             final EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
                         public void handle(final KeyEvent keyEvent) {
                             if (keyEvent.getCode() == KeyCode.F1) {
+                                textField1.clear();
                                 textField2.setText("F1 gedrückt");
                             } else if (keyEvent.getCode() == KeyCode.F2) {
+                                textField1.clear();
                                 textField2.setText("F2 gedrückt");
                             } else if (keyEvent.getCode() == KeyCode.F3) {
+                                textField1.clear();
                                 textField2.setText("F3 gedrückt");
                             } else {
+                                textField1.setText(null);
                                 textField2.setText("");
                             }
                             keyEvent.consume();
