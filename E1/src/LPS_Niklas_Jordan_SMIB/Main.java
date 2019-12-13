@@ -21,15 +21,14 @@ public class Main extends Application{
             textField2.setPromptText("Schreibe hier");
             final EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
                         public void handle(final KeyEvent keyEvent) {
-                            //Hier fehlt Ihr Code
                             if (keyEvent.getCode() == KeyCode.F1) {
                                 textField2.setText("F1 gedrückt");
-                            }
-                            if (keyEvent.getCode() == KeyCode.F2) {
+                            } else if (keyEvent.getCode() == KeyCode.F2) {
                                 textField2.setText("F2 gedrückt");
-                            }
-                            if (keyEvent.getCode() == KeyCode.F3) {
+                            } else if (keyEvent.getCode() == KeyCode.F3) {
                                 textField2.setText("F3 gedrückt");
+                            } else {
+                                textField2.setText("");
                             }
                             keyEvent.consume();
                         }
