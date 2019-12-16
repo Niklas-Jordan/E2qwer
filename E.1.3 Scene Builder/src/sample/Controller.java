@@ -6,26 +6,26 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class Controller {
-@FXML
+    @FXML
     private TextField eingabefeld;
 
-@FXML
+    @FXML
     private ListView list;
 
-@FXML
+    @FXML
     private Button addButton, deleteButton;
 
-@FXML
-    private void initialize(){
-    addButton.setOnAction((event) ->{
-        if (!(eingabefeld.getText().equals("")||eingabefeld.getText().equals(null)))
-        list.getItems().add(eingabefeld.getText());
-        eingabefeld.clear();
-    });
-    deleteButton.setOnAction((event) ->{
-        list.getItems().clear();
-    });
-}
+    @FXML
+    private void initialize() {
+        addButton.setOnAction((event) -> {
+            if (!(eingabefeld.getText().equals("") || eingabefeld.getText().equals(null)))
+                list.getItems().add(eingabefeld.getText());
+            eingabefeld.clear();
+        });
+        deleteButton.setOnAction((event) -> {
+            list.getItems().clear();
+        });
+    }
 }
 
 
