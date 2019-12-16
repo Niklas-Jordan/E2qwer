@@ -19,6 +19,8 @@ public class Main extends Application{
             textField1.setPromptText("Schreibe hier");
             TextField textField2 = new TextField();
             textField2.setPromptText("Schreibe hier");
+            textField1.setEditable(false);
+            textField2.setEditable(false);
             final EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
                         public void handle(final KeyEvent keyEvent) {
                             if (keyEvent.getCode() == KeyCode.F1) {
@@ -30,9 +32,6 @@ public class Main extends Application{
                             } else if (keyEvent.getCode() == KeyCode.F3) {
                                 textField1.clear();
                                 textField2.setText("F3 gedrückt");
-                            } else {
-                                textField1.setText("");
-                                textField2.setText("");
                             }
                             keyEvent.consume();
                         }
