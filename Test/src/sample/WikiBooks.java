@@ -16,4 +16,3 @@ public class WikiBooks {
         this.url = "https://de.wikibooks.org/wiki/Hauptseite" + url;
     }
 }
-
