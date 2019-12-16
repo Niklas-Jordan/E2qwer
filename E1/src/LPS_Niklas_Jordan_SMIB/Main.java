@@ -31,7 +31,7 @@ public class Main extends Application{
                                 textField1.clear();
                                 textField2.setText("F3 gedrückt");
                             } else {
-                                textField1.setText(null);
+                                textField1.setText("");
                                 textField2.setText("");
                             }
                             keyEvent.consume();
