@@ -20,15 +20,15 @@
          <children>
             <GridPane fx:id="gridP" prefHeight="30.0" prefWidth="906.0" VBox.vgrow="ALWAYS">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="812.9999694824219" minWidth="10.0" prefWidth="796.9999694824219" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="448.20001220703125" minWidth="10.0" prefWidth="109.00003051757812" />
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="812.9999694824219" minWidth="10.0" prefWidth="796.9999694824219" />
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="448.20001220703125" minWidth="10.0" prefWidth="109.00003051757812" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Suchen" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <TextField fx:id="tfSearch" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Suchen" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <TextField fx:id="tfSearch" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                </children>
             </GridPane>
          </children>
