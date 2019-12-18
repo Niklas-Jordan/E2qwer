@@ -12,8 +12,7 @@ public class WikiBooks {
     }
 
     public void setUrl(String url) {
-        url = url.replace("", "_");
-        this.url = "https://de.wikibooks.org/wiki/Hauptseite" + url;
+        this.url = "https://de.wikibooks.org/wiki/ " + url;
     }
 }
 
