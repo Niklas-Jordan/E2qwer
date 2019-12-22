@@ -10,6 +10,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 
+/**
+ * The type Wiki books controller.
+ */
 public class WikiBooksController {
     @FXML
     private AnchorPane anchorP;

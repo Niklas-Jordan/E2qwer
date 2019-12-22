@@ -20,13 +20,21 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+/**
+ * The type Wiki books parser.
+ */
 public class WikiBooksParser {
 
-    /*
-     * readFromURL</p> Methode fuer die Verbindung zu einer URL + einlesen des
-     * Inputstreams, dabei wird der InputStream in eine ArrayList gespeichert.
+    /**
+     * Read from url array list.
+     *
+     * @param _sSearch the s search
+     * @return the array list
+     *
+     * readFromURL</p> Methode fuer die Verbindung zu einer URL + einlesen des Inputstreams, dabei wird der InputStream in eine ArrayList gespeichert.
      * _sSearch return throws IOException
      */
+
     public ArrayList<String> readFromURL(String _sSearch) {
         ArrayList<String> tmp = new ArrayList<String>();
 
@@ -56,10 +64,15 @@ public class WikiBooksParser {
 
     }
 
-    /*
+    /**
+     * Parse medium.
+     *
+     * @param search the search
+     * @return the medium
      * parse Methode zum Parsen eine XML Datei -> auf basis von StaxParser param
      * _sSearch throws IOException
      */
+
     public Medium parse(String search) {
 
         boolean bIP = false, isbook = false, bUsername = false, bTimestamp = false, bText = false;
@@ -144,13 +157,13 @@ public class WikiBooksParser {
         return null;
     }
 
-    /*
+    /**
+     * String parser regal string.
      * stringParserRegal Methode zum auslesen des Regals eines Text Tags
-     *
-     * @param _sText
-     *
-     * @return
+     * @param _sText the s text
+     * @return the string
      */
+
     public String stringParserRegal(StringBuilder _sText) {
         int iPos = 0;
         String sRegal = null;
@@ -168,13 +181,13 @@ public class WikiBooksParser {
         return sRegal;
     }
 
-    /*
+    /**
+     * String parser kapitel array list.
      * stringParserKapitel</p> Methode zum auslesen der Kapitel eines Text Tags
-     *
-     * @param _sText
-     *
-     * @return
+     * @param _sText the s text
+     * @return the array list
      */
+
     public ArrayList<String> stringParserKapitel(StringBuilder _sText) {
         int iPos = 0, iCount = 0, iCount2 = 1;
         ArrayList<String> arr_Kapitel = new ArrayList<String>();

@@ -3,21 +3,31 @@ package sample;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * The type Binary persistency.
+ * Übernahme der Klasse von Florian Eimann
+ */
 public class BinaryPersistency implements Persistency, Serializable {
 
 
     private static final long serialVersionUID = 1L;
-    private ArrayList<Zettelkasten> Binaere = new ArrayList<Zettelkasten>();;
+    private ArrayList<Zettelkasten> Binaere = new ArrayList<Zettelkasten>();
 
-    public void save (final Zettelkasten ZK,final String Dateiname){
+    /**
+     * Save.
+     *
+     * @param ZK        the zk
+     * @param Dateiname the dateiname
+     */
+    public void save(final Zettelkasten ZK, final String Dateiname) {
 
         ObjectOutputStream OOu = null;
         FileOutputStream FOu = null;
 
-        try{
+        try {
 
-            FOu=new FileOutputStream(Dateiname);
-            OOu=new ObjectOutputStream(FOu);
+            FOu = new FileOutputStream(Dateiname);
+            OOu = new ObjectOutputStream(FOu);
             OOu.writeObject(ZK);
 
         } catch (IOException ioe) {
@@ -35,17 +45,22 @@ public class BinaryPersistency implements Persistency, Serializable {
         }
     }
 
-    public Zettelkasten load(final String Dateiname){
+    /**
+     * Load zettelkasten.
+     *
+     * @param Dateiname the dateiname
+     * @return the zettelkasten
+     */
+    public Zettelkasten load(final String Dateiname) {
 
         Zettelkasten ZK = null;
         FileInputStream FIn = null;
         ObjectInputStream OIn = null;
 
-        try
-        {
-            FIn=new FileInputStream(Dateiname);
-            OIn=new ObjectInputStream(FIn);
-            ZK=(Zettelkasten) OIn.readObject();
+        try {
+            FIn = new FileInputStream(Dateiname);
+            OIn = new ObjectInputStream(FIn);
+            ZK = (Zettelkasten) OIn.readObject();
 
         } catch (IOException ioe) {
             ioe.printStackTrace();
@@ -64,10 +79,20 @@ public class BinaryPersistency implements Persistency, Serializable {
         return ZK;
     }
 
+    /**
+     * Gets binaere.
+     *
+     * @return the binaere
+     */
     public ArrayList<Zettelkasten> getBinaere() {
         return Binaere;
     }
 
+    /**
+     * Sets binaere.
+     *
+     * @param binaere the binaere
+     */
     public void setBinaere(ArrayList<Zettelkasten> binaere) {
         Binaere = binaere;
     }

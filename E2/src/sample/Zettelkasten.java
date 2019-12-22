@@ -3,19 +3,30 @@ package sample;
 import java.io.Serializable;
 import java.util.*;
 
-public class Zettelkasten implements Iterable <Medium>, Serializable {
+/**
+ * The type Zettelkasten.
+ * Übernahme der Klasse von Florian Eimann
+ *
+ * stores the state of Sort.
+ */
+public class Zettelkasten implements Iterable<Medium>, Serializable {
 
 
     private static final long serialVersionUID = 1L;
 
-    private ArrayList<Medium> register= new ArrayList<Medium>();;
+    private ArrayList<Medium> register = new ArrayList<Medium>();
+
     private String bSort = null;
-    // stores the state of Sort.
 
-
+    /**
+     * Gets medium arr.
+     *
+     * @return the medium arr
+     */
     public ArrayList<Medium> getMedium_Arr() {
         return register;
     }
+
     /**
      * Adds a new media to the ArrayList (paper box).
      *
@@ -64,11 +75,12 @@ public class Zettelkasten implements Iterable <Medium>, Serializable {
      * An error will be displayed if no object can be found
      * or a "DuplicateEntry" Exception will be thrown if multiply objects are found.
      *
-     * @param title contains title of the object you want to delete
-     * @param string
+     * @param title  contains title of the object you want to delete
+     * @param string the string
+     * @throws DuplicateException the duplicate exception
      */
     @SuppressWarnings("unlikely-arg-type")
-    public void dropMedium(final String title, String string) throws DuplicateException{
+    public void dropMedium(final String title, String string) throws DuplicateException {
         ArrayList<Medium> searchResult = findMedium(title);
         if (searchResult.size() > 1) {
         } else if (searchResult.size() == 0) {
@@ -194,10 +206,9 @@ public class Zettelkasten implements Iterable <Medium>, Serializable {
                     }
                 }
 
-                if(searchResultSize == searchResult.size())
-                {
+                if (searchResultSize == searchResult.size()) {
                     System.out.println("Es wurden keine genauen Duplikate mit dem Titel \"" + title + "\" gefunden.");
-                }else {
+                } else {
                     System.out.println("Alle Duplikate mit dem Titel \"" + title + "\" wurden erfolgreich gelöscht.");
                 }
 
@@ -228,8 +239,10 @@ public class Zettelkasten implements Iterable <Medium>, Serializable {
 
     /**
      * Sorts the ArrayList "media" based on the title from „A“„Z“ (asc) or „Z“„A“ (desc) (select per user input).
+     *
+     * @param _sArt the s art
      */
-    //neue sort-Methode
+//neue sort-Methode
     public void sort(String _sArt) {
         Comparator<Medium> comp = new MediumComparator();
 
@@ -238,18 +251,18 @@ public class Zettelkasten implements Iterable <Medium>, Serializable {
                 Collections.sort(register, comp);
                 Collections.reverse(register);
                 bSort = "ab";
-            }else if(_sArt.contentEquals("auf")) {
+            } else if (_sArt.contentEquals("auf")) {
                 Collections.sort(register);
                 bSort = "auf";
             } else {
                 System.out.println("Bitte auf/ab eingeben!");
             }
-        }else {
+        } else {
             if (bSort.equals("auf") && _sArt.contentEquals("ab")) {
                 Collections.sort(register, comp);
                 Collections.reverse(register);
                 bSort = "ab";
-            }else if(bSort.equals("ab") && _sArt.contentEquals("auf")) {
+            } else if (bSort.equals("ab") && _sArt.contentEquals("auf")) {
                 Collections.sort(register);
                 bSort = "auf";
             } else {
@@ -258,7 +271,7 @@ public class Zettelkasten implements Iterable <Medium>, Serializable {
         }
     }
 
-    private class MediumComparator implements Comparator<Medium>{
+    private class MediumComparator implements Comparator<Medium> {
 
         /* (non-Javadoc)
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
@@ -268,12 +281,12 @@ public class Zettelkasten implements Iterable <Medium>, Serializable {
          * Bei gleichen Titel wird nach dem Typ verglichen.
          */
         public int compare(Medium _M1, Medium _M2) {
-            if(_M1.getTitel().compareTo(_M2.getTitel()) == 0){
+            if (_M1.getTitel().compareTo(_M2.getTitel()) == 0) {
                 return _M1.getClass().getName().substring(7).toString().compareTo(_M2.getClass().getName().substring(7).toString());
-            }else if (_M1.getTitel().compareTo(_M2.getTitel()) < 0) {
+            } else if (_M1.getTitel().compareTo(_M2.getTitel()) < 0) {
                 return -1;
 
-            }else
+            } else
                 return 1;
         }
 
@@ -286,9 +299,10 @@ public class Zettelkasten implements Iterable <Medium>, Serializable {
     public Iterator<Medium> iterator() {
         Iterator<Medium> iterator = new Iterator<Medium>() {
             int counter = 0;
+
             @Override
             public boolean hasNext() {
-                if(counter < register.size())
+                if (counter < register.size())
                     return true;
                 else
                     return false;

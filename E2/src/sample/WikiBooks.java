@@ -1,16 +1,34 @@
 package sample;
 
+/**
+ * The type Wiki books.
+ */
 public class WikiBooks {
     private String url;
 
+    /**
+     * Instantiates a new Wiki books.
+     *
+     * @param url the url
+     */
     public WikiBooks(String url) {
         setUrl(url);
     }
 
+    /**
+     * Gets url.
+     *
+     * @return the url
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Sets url.
+     *
+     * @param url the url
+     */
     public void setUrl(String url) {
         this.url = "https://de.wikibooks.org/wiki/ " + url;
     }

@@ -9,15 +9,19 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
+/**
+ * The type Tmp file.
+ */
 public class TmpFile {
 
-    /*
-     * createTmpFile
-     * Methode zum erstellen einer TmpFile
-     * @param _tmp
-     * @return
-     * @throws IOException
+    /**
+     * Create tmp file file.
+     *
+     * @param _tmp the tmp
+     * @return the file
+     * @throws IOException the io exception
      */
+
     public File createTmpFile(ArrayList<String> _tmp) throws IOException {
         File datei = File.createTempFile("temp", ".xml");
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(datei), "UTF8"));

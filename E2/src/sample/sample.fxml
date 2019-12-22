@@ -10,28 +10,38 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="anchorP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.WikiBooksController">
-   <children>
-      <VBox fx:id="vBoxBottom" layoutX="7.0" layoutY="44.0" prefHeight="625.0" prefWidth="906.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <children>
-            <WebView fx:id="browser" prefHeight="618.0" prefWidth="906.0" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin></WebView>
-         </children>
-      </VBox>
-      <GridPane fx:id="gridP" layoutX="5.0" layoutY="14.0" prefHeight="26.0" prefWidth="896.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="817.6000061035156" minWidth="10.0" prefWidth="792.7999572753906" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="443.20001220703125" minWidth="10.0" prefWidth="103.20004272460938" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="81.39999809265137" minHeight="10.0" prefHeight="81.39999809265137" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TextField fx:id="tfSearch" prefHeight="27.0" prefWidth="547.0" />
-            <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Suchen" GridPane.columnIndex="1" />
-         </children>
-      </GridPane>
-   </children>
+<AnchorPane fx:id="anchorP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="669.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.WikiBooksController">
+    <children>
+        <VBox fx:id="vBoxBottom" layoutX="7.0" layoutY="44.0" prefHeight="625.0" prefWidth="906.0"
+              AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"
+              AnchorPane.topAnchor="5.0">
+            <children>
+                <WebView fx:id="browser" prefHeight="618.0" prefWidth="906.0" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </WebView>
+            </children>
+        </VBox>
+        <GridPane fx:id="gridP" layoutX="5.0" layoutY="14.0" prefHeight="26.0" prefWidth="896.0"
+                  AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="817.6000061035156" minWidth="10.0"
+                                   prefWidth="792.7999572753906"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="443.20001220703125" minWidth="10.0"
+                                   prefWidth="103.20004272460938"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="81.39999809265137" minHeight="10.0" prefHeight="81.39999809265137"
+                                vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <TextField fx:id="tfSearch" prefHeight="27.0" prefWidth="547.0"/>
+                <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Suchen"
+                        GridPane.columnIndex="1"/>
+            </children>
+        </GridPane>
+    </children>
 </AnchorPane>

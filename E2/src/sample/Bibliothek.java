@@ -2,10 +2,18 @@ package sample;
 
 import java.io.IOException;
 
+/**
+ * The type Bibliothek.
+ * Übernahme der Klasse von Florian Eimann
+ */
 public class Bibliothek {
 
-//Alles bis einschließlich Aufgabenblatt D von Fuad übernommen !!!
-
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws IOException the io exception
+     */
     public static void main(String[] args) throws IOException {
 
         @SuppressWarnings("unused")
