@@ -3,6 +3,7 @@ package sample;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +14,7 @@ import javafx.scene.web.WebView;
 /**
  * The type Wiki books controller.
  */
+
 public class WikiBooksController {
     @FXML
     private AnchorPane anchorP;
@@ -27,10 +29,13 @@ public class WikiBooksController {
     private TextField tfSearch;
 
     @FXML
-    private Button btnSearch;
+    private Button btnSearch, btnAdd, btnSort, btnDelete, btnSave, btnLoad;
 
     @FXML
     private WebView browser;
+
+    @FXML
+    private Label labelAuthor, labelZeit;
 
     @FXML
     private void initialize() {
@@ -45,7 +50,6 @@ public class WikiBooksController {
                 search();
             }
         });
-
         browser.getEngine().getLoadWorker().stateProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (Worker.State.SUCCEEDED.equals(newValue)) {
                 if (browser.getEngine().getLocation().contains("https://de.wikibooks.org/wiki/ ")) {
@@ -66,6 +70,22 @@ public class WikiBooksController {
                 }
             }
         }));
+
+        btnAdd.setOnAction((event -> {
+            add();
+        }));
+        btnSort.setOnAction((event -> {
+            sort();
+        }));
+        btnDelete.setOnAction((event -> {
+            delete();
+        }));
+        btnSave.setOnAction((event -> {
+            safe();
+        }));
+        btnLoad.setOnAction((event -> {
+            load();
+        }));
     }
 
     private String urlName;
@@ -81,6 +101,24 @@ public class WikiBooksController {
             System.out.println("Fehler beim Suchen!");
         }
     }
+
+    private void add() {
+
+    }
+
+    private void sort() {
+
+    }
+
+    private void delete() {
+
+    }
+
+    private void safe() {
+
+    }
+
+    private void load() {
+
+    }
 }
-
-
