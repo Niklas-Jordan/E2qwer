@@ -2,6 +2,7 @@ package sample;
 
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -10,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
+
+import java.util.ArrayList;
 
 /**
  * The type Wiki books controller.
@@ -45,6 +48,10 @@ public class WikiBooksController {
             search();
         });
 
+        tfSearch.setOnMouseClicked((event -> {
+            tfSearch.selectAll();
+        }));
+
         tfSearch.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 search();
@@ -79,6 +86,7 @@ public class WikiBooksController {
         }));
         btnDelete.setOnAction((event -> {
             delete();
+            btnDelete.setDisable(true);
         }));
         btnSave.setOnAction((event -> {
             safe();
@@ -89,6 +97,11 @@ public class WikiBooksController {
     }
 
     private String urlName;
+    private WikiBooks wikiBooks = null;
+    private ArrayList<Medium> data = new ArrayList<>();
+    private Zettelkasten zettelkasten = new Zettelkasten();
+    private Medium selectedItemBuch = null;
+    private String direction = "up";
 
     private void search() {
         try {
@@ -103,22 +116,52 @@ public class WikiBooksController {
     }
 
     private void add() {
-
+        try {
+            if (!data.contains(wikiBooks)) {
+                zettelkasten.addMedium(wikiBooks);
+                data.add(wikiBooks);
+                System.out.println(data);
+            } else {
+                System.out.println("ERROR");
+            }
+        } catch (Exception e) {
+            errorWikiBooks();
+        }
     }
 
     private void sort() {
-
+        zettelkasten.sort(direction);
+        if (direction.equals("down")) {
+            direction = "up";
+        } else {
+            direction = "down";
+        }
     }
 
     private void delete() {
-
+        try {
+            zettelkasten.dropMedium("q", selectedItemBuch.getTitel());
+        } catch (Exception e) {
+            errorWikiBooks();
+        }
     }
 
     private void safe() {
+        try {
 
+        } catch (Exception e) {
+            System.out.println("Fehler beim speichern!");
+        }
     }
 
     private void load() {
 
+    }
+
+    private void errorWikiBooks() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("");
+        alert.setContentText("WikiBooks ist momentan nicht erreichbar");
+        alert.showAndWait();
     }
 }
