@@ -30,7 +30,7 @@ public class WikiBooksParser {
      *
      * @param _sSearch the s search
      * @return the array list
-     *
+     * <p>
      * readFromURL</p> Methode fuer die Verbindung zu einer URL + einlesen des Inputstreams, dabei wird der InputStream in eine ArrayList gespeichert.
      * _sSearch return throws IOException
      */
@@ -160,6 +160,7 @@ public class WikiBooksParser {
     /**
      * String parser regal string.
      * stringParserRegal Methode zum auslesen des Regals eines Text Tags
+     *
      * @param _sText the s text
      * @return the string
      */
@@ -184,6 +185,7 @@ public class WikiBooksParser {
     /**
      * String parser kapitel array list.
      * stringParserKapitel</p> Methode zum auslesen der Kapitel eines Text Tags
+     *
      * @param _sText the s text
      * @return the array list
      */
