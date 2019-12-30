@@ -18,12 +18,11 @@ public class Synonyme {
     private String corpus = "deu_news_2012_1M";
     private String request = "/coocsim/";
     private String search = "";
-    private String parameter = "";
+    private String parameter = "?minSim=0.1&limit=";
 
     public ObservableList<String> synonymList(String wort) throws IOException, ParseException {
         search = wort;
-        parameter = "?minSim=0.1&limit=" + limit;
-        ObservableList<String> retList = FXCollections.observableArrayList();
+        ObservableList<String> output = FXCollections.observableArrayList();
 
         JSONArray jsonResponseArr = null;
         JSONObject wordContainer = null;
@@ -44,10 +43,10 @@ public class Synonyme {
             //beschafft das Synonym aus dem Container
             synonym = (String) wordContainer.get("word");
 
-            retList.add(synonym);
+            output.add(synonym);
         }
 
-        return retList;
+        return output;
     }
 
     public static String streamToString(InputStream is) throws IOException {

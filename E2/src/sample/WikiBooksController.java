@@ -175,7 +175,13 @@ public class WikiBooksController {
 
             if (!urlName.equals(search)) {
                 browser.getEngine().load("https://de.wikibooks.org/wiki/" + search);
+                searchSynonym();
+                comboClear();
+                wikiBooks.calculateRepraesentation();
             }
+            WikiBooksParser books = new WikiBooksParser();
+            wikiBooks = (WikiBooks) books.parse(search);
+            setBookInformation(wikiBooks);
         } catch (NullPointerException e) {
             System.out.println("Fehler beim Suchen!");
         }
@@ -183,12 +189,13 @@ public class WikiBooksController {
 
     private void add() {
         try {
-            if (!data.contains(wikiBooks)) {
-                zettelkasten.addMedium(wikiBooks);
-                data.add(wikiBooks);
-                System.out.println(data);
-            } else {
-                System.out.println("ERROR");
+            zettelkasten.addMedium(wikiBooks);
+            for (Medium medium : data) {
+                if (!data.contains(wikiBooks)) {
+                    zettelkasten.addMedium(medium);
+                } else {
+                    System.out.println("ERROR");
+                }
             }
         } catch (Exception e) {
             errorWikiBooks();
@@ -197,21 +204,24 @@ public class WikiBooksController {
 
     private void sort() {
         zettelkasten.sort(direction);
-        if (direction.equals("down")) {
-            direction = "up";
-        } else {
+        medienList();
+        if (!direction.equals("down")) {
             direction = "down";
+        } else {
+            direction = "up";
         }
     }
 
     private void delete() {
         try {
             zettelkasten.dropMedium("q", selectedItemBuch.getTitel());
+            medienList();
         } catch (Exception e) {
             errorWikiBooks();
         }
     }
-/*
+
+    //TODO: Safe and Load function missing; Buttons in fxml need to be added too
     private void safe() {
         try {
 
@@ -223,8 +233,8 @@ public class WikiBooksController {
     private void load() {
 
     }
-*/
-private Synonyme synonyme = new Synonyme();
+
+    private Synonyme synonyme = new Synonyme();
 
     private void searchSynonym() {
         try {
@@ -299,6 +309,7 @@ private Synonyme synonyme = new Synonyme();
         alert.setContentText("Fehler bei der Durchführung einer der Knöpfe");
         alert.showAndWait();
     }
+
     public void showInfo() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("");
@@ -327,6 +338,7 @@ private Synonyme synonyme = new Synonyme();
         }
     }
 
+    //TODO: Methode noch nicht implementiert
     private void medienList() {
         listMedien.getItems().clear();
         for (Medium medium : zettelkasten.getMedium_Arr()) {
@@ -334,6 +346,7 @@ private Synonyme synonyme = new Synonyme();
         }
     }
 
+    //TODO: Methode noch nicht implementiert
     private void setBookInformation(Medium medium) {
         if (medium != null) {
             labelWorker.setText("Letzter Bearbeiter: " + wikiBooks.getVerfasser());

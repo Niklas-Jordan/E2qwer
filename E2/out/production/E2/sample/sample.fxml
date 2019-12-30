@@ -2,50 +2,187 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="anchorP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.WikiBooksController">
+<AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.WikiBooksController">
     <children>
-        <VBox fx:id="vBoxBottom" layoutX="7.0" layoutY="45.0" prefHeight="619.0" prefWidth="896.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="45.0">
+        <VBox fx:id="vboxBackground" layoutX="1.0" prefHeight="546.0" prefWidth="1063.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <WebView fx:id="browser" prefHeight="618.0" prefWidth="906.0" VBox.vgrow="ALWAYS">
+                <MenuBar fx:id="menuBar">
+                    <menus>
+                        <Menu fx:id="menuBtn" mnemonicParsing="false" text="?">
+                            <items>
+                                <MenuItem fx:id="menuItem" mnemonicParsing="false" text="Über dieses Programm " />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <HBox fx:id="hboxBackground" prefHeight="522.0" prefWidth="920.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <HBox fx:id="hboxLeftBg" prefHeight="522.0" prefWidth="550.0" HBox.hgrow="NEVER">
+                            <children>
+                                <VBox fx:id="vboxSynonym" prefHeight="522.0" prefWidth="254.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <GridPane fx:id="gridSynomeTopBtn" VBox.vgrow="NEVER">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Button fx:id="btnBackward" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Zurück" />
+                                                <Button fx:id="btnForward" mnemonicParsing="false" prefHeight="26.0" prefWidth="72.0" text="Vor" GridPane.columnIndex="2" />
+                                                <ComboBox fx:id="combo" prefHeight="26.0" prefWidth="66.0" GridPane.columnIndex="1" />
+                                            </children>
+                                        </GridPane>
+                                        <GridPane fx:id="gridSynonymLabel" prefHeight="30.0" prefWidth="209.0" VBox.vgrow="NEVER">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label fx:id="labelSynonym" prefHeight="18.0" prefWidth="65.0" text="Synonyme:" />
+                                            </children>
+                                        </GridPane>
+                                        <GridPane fx:id="gridSynonymList" prefHeight="459.0" prefWidth="242.0" VBox.vgrow="NEVER">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="428.6000579833984" minHeight="10.0" prefHeight="428.6000579833984" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="224.60001220703126" minHeight="10.0" prefHeight="30.199942016601597" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Button fx:id="btnSearchSynonym" mnemonicParsing="false" text="Suche Synonym" GridPane.rowIndex="1" />
+                                                <ListView fx:id="listSynonym" prefHeight="200.0" prefWidth="200.0" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </VBox>
+                                <VBox fx:id="vboxMedienBg" prefHeight="522.0" prefWidth="322.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <GridPane fx:id="gridMedienBtn" prefHeight="33.0" prefWidth="308.0" VBox.vgrow="NEVER">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Button fx:id="btnAdd" mnemonicParsing="false" prefHeight="26.0" prefWidth="93.0" text="Hinzufügen" />
+                                                <Button fx:id="btnSort" mnemonicParsing="false" prefHeight="26.0" prefWidth="93.0" text="Sortieren" GridPane.columnIndex="1" />
+                                                <Button fx:id="btnDelete" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Löschen" GridPane.columnIndex="2" />
+                                            </children>
+                                        </GridPane>
+                                        <GridPane fx:id="gridMedienLabel" prefHeight="34.0" prefWidth="308.0" VBox.vgrow="NEVER">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label fx:id="labelMedien" text="Medien:" />
+                                            </children>
+                                        </GridPane>
+                                        <GridPane fx:id="gridMedienList" prefHeight="462.0" prefWidth="310.0" VBox.vgrow="NEVER">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="456.200048828125" minHeight="10.0" prefHeight="429.79999389648435" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="221.79999389648438" minHeight="6.599951171875034" prefHeight="33.00000610351566" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <ListView fx:id="listMedien" prefHeight="432.0" prefWidth="308.0" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER" />
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <HBox.margin>
+                                <Insets left="4.0" right="4.0" />
+                            </HBox.margin>
+                        </HBox>
+                        <Separator fx:id="separator" orientation="VERTICAL" prefHeight="200.0" HBox.hgrow="NEVER">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Separator>
+                        <HBox fx:id="hboxRightBg" prefHeight="522.0" prefWidth="506.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <VBox fx:id="vboxRightBg" prefHeight="522.0" prefWidth="506.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <GridPane fx:id="gridSearchBrowser" VBox.vgrow="NEVER">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.7999267578125" minWidth="10.0" prefWidth="70.19999618530274" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="416.0" minWidth="10.0" prefWidth="370.1999267578125" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.199951171875" minWidth="10.0" prefWidth="62.2000732421875" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label fx:id="labelSearch" text="Suchbegriff:" />
+                                                <TextField fx:id="tfSearch" prefHeight="26.0" prefWidth="286.0" GridPane.columnIndex="1" />
+                                                <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" text="Suchen" GridPane.columnIndex="2" />
+                                            </children>
+                                        </GridPane>
+                                        <HBox fx:id="hboxBrowser" prefHeight="458.0" prefWidth="506.0" VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <WebView fx:id="browser" prefHeight="458.0" prefWidth="506.0" HBox.hgrow="ALWAYS" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets top="3.0" />
+                                            </VBox.margin>
+                                        </HBox>
+                                        <GridPane fx:id="gridBrowserLabel" VBox.vgrow="NEVER">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label fx:id="labelWorker" text="Letzter Bearbeiter:" />
+                                                <Label fx:id="labelTime" text="Letzte Änderung:" GridPane.columnIndex="1" />
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <HBox.margin>
+                                <Insets left="4.0" right="4.0" />
+                            </HBox.margin>
+                        </HBox>
+                    </children>
                     <VBox.margin>
-                        <Insets />
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                     </VBox.margin>
-                </WebView>
-                <Label fx:id="labelAuthor" prefHeight="18.0" prefWidth="98.0" text="Letzter Bearbeiter:" />
-                <Label fx:id="labelZeit" text="Letzte Änderung:" />
+                </HBox>
             </children>
         </VBox>
-        <GridPane fx:id="gridP" layoutX="5.0" layoutY="14.0" prefHeight="26.0" prefWidth="896.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="817.6000061035156" minWidth="10.0" prefWidth="451.79998779296875" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.4000244140625" minWidth="10.0" prefWidth="106.20001220703125" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.4000244140625" minWidth="0.0" prefWidth="80.79998779296875" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.4000244140625" minWidth="10.0" prefWidth="67.20001220703125" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.4000244140625" minWidth="0.0" prefWidth="62.199938964843795" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.4000244140625" minWidth="10.0" prefWidth="71.79995117187502" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.4000244140625" minWidth="10.0" prefWidth="59.19997558593752" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="81.39999809265137" minHeight="10.0" prefHeight="81.39999809265137" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <TextField fx:id="tfSearch" prefHeight="27.0" prefWidth="547.0" />
-                <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Suchen" GridPane.columnIndex="1" />
-                <Button fx:id="btnAdd" mnemonicParsing="false" text="Hinzufügen" GridPane.columnIndex="2" />
-                <Button fx:id="btnSort" mnemonicParsing="false" text="Sortieren" GridPane.columnIndex="3" />
-                <Button fx:id="btnDelete" mnemonicParsing="false" text="Löschen" GridPane.columnIndex="4" />
-                <Button fx:id="btnSave" mnemonicParsing="false" text="Speichern" GridPane.columnIndex="5" />
-                <Button fx:id="btnLoad" mnemonicParsing="false" text="Laden" GridPane.columnIndex="6" />
-            </children>
-        </GridPane>
     </children>
 </AnchorPane>
