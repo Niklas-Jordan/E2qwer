@@ -5,6 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+/**
+ * The type Controller.
+ * added den text vom textfeld in die Liste, wenn das TF leer ist, wird nichts geaddet
+ * delete leert die gesammte Liste
+ */
 public class Controller {
     @FXML
     private TextField eingabefeld;
