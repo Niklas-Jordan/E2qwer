@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 /**
  * The type Tmp file.
+ * @author Niklas Jordan SMIB
+ * In Zusammenarbeit mit Florian Eimann
  */
 public class TmpFile {
 

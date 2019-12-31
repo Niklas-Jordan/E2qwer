@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 /**
  * The type Wiki books controller.
+ * @author Niklas Jordan SMIB
+ * In Zusammenarbeit mit Florian Eimann
  */
 public class WikiBooksController {
     @FXML

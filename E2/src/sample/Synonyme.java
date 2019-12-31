@@ -15,6 +15,8 @@ import javafx.collections.ObservableList;
 
 /**
  * The type Synonyme.
+ * @author Niklas Jordan SMIB
+ * In Zusammenarbeit mit Florian Eimann
  */
 public class Synonyme {
     private String basisUrl = "http://api.corpora.uni-leipzig.de/ws/similarity/";

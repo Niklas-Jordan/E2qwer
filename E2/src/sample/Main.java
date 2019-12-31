@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 /**
  * The type Main.
+ * @author Niklas Jordan SMIB
  */
 public class Main extends Application {
 

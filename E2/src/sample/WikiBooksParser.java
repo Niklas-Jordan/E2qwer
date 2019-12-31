@@ -22,6 +22,7 @@ import javax.xml.stream.events.XMLEvent;
 
 /**
  * The type Wiki books parser.
+ * Übernommen von Florian Eimann
  */
 public class WikiBooksParser {
 

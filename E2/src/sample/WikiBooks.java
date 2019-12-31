@@ -9,6 +9,8 @@ import java.util.TimeZone;
 
 /**
  * The type Wiki books.
+ * @author Niklas Jordan SMIB
+ * In Zusammenarbeit mit Florian Eimann
  */
 public class WikiBooks extends Medium implements Serializable {
 
