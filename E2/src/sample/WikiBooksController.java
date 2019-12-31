@@ -14,7 +14,6 @@ import java.util.ArrayList;
 /**
  * The type Wiki books controller.
  */
-
 public class WikiBooksController {
     @FXML
     private AnchorPane anchorpane;
@@ -137,6 +136,12 @@ public class WikiBooksController {
         menuItem.setOnAction(event -> {
             showInfo();
         });
+        btnSave.setOnAction(event -> {
+            save();
+        });
+        btnLoad.setOnAction(event -> {
+            load();
+        });
 
         anchorpane.setOnKeyPressed(this::btnF1);
     }
@@ -206,7 +211,7 @@ public class WikiBooksController {
     }
 
     //TODO: Safe and Load function missing; Buttons in fxml need to be added too
-    private void safe() {
+    private void save() {
         try {
 
         } catch (Exception e) {
@@ -215,7 +220,11 @@ public class WikiBooksController {
     }
 
     private void load() {
+        try {
 
+        } catch (Exception e) {
+            System.out.println("Fehler beim laden!");
+        }
     }
 
     private Synonyme synonyme = new Synonyme();
@@ -223,6 +232,7 @@ public class WikiBooksController {
     private void searchSynonym() {
         try {
             ObservableList<String> liste = synonyme.synonymList(tfSearch.getText());
+            liste.sort(String :: compareTo);
             listSynonym.getItems().clear();
             if (liste.size() < 1) {
                 listSynonym.getItems().add("<keine>");
@@ -294,6 +304,9 @@ public class WikiBooksController {
         alert.showAndWait();
     }
 
+    /**
+     * Show info.
+     */
     public void showInfo() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("");
