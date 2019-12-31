@@ -42,27 +42,29 @@ public class WikiBooksController {
 
     @FXML
     private void initialize() {
+        // lädt die Website Wikibooks
         browser.getEngine().load("https://de.wikibooks.org/wiki/");
-
+        // übernimmt State des Workloaders von der Webview Engine
         browser.getEngine().getLoadWorker().stateProperty().addListener((observable, oldValue, newValue) -> {
-            //Worker State alle Worker fangen in Ready an, perfomt Aufgaben im Hintergrund, ermöglicht einen "Blick" in die "Zukunft"
+            //Worker State alle Worker beginnen mit Ready, läuft im Hintergrund, überprüft das Ergebnis vor der Ausführung
             if (Worker.State.FAILED.equals(newValue)) {
                 errorWikiBooks();
                 comboClear();
             }
+            // Umleitung bei Link, welcher von Wikibooks weglenkt -> Zurückleitung zur Startseite
             if (Worker.State.SCHEDULED.equals(newValue)) {
                 if (!browser.getEngine().getLocation().contains("https://de.wikibooks.org/")) {
                     browser.getEngine().load("https://de.wikibooks.org/wiki/");
                 }
             }
-
+            // setzt aktuellen Begriff in die Suchleiste bei Verbindungsaufbau
             if (Worker.State.SUCCEEDED.equals(newValue)) {
                 if (browser.getEngine().getLocation().contains("https://de.wikibooks.org/wiki/")) {
                     urlName = browser.getEngine().getLocation();
                     urlName = urlName.replace("https://de.wikibooks.org/wiki/", "");
                     tfSearch.setText(urlName);
                     search();
-
+                    // setzt den Titel in das Suchfeld, wenn er als Buchtitel erkannt wird
                 } else {
                     urlName = browser.getEngine().getLocation();
                     urlName = urlName.replace("https://de.wikibooks.org/w/index.php?search=", "");
@@ -107,7 +109,7 @@ public class WikiBooksController {
             searchSynonym();
             tfSearch.setText(String.valueOf(synonym));
         });
-
+        // Doppelklick auf Synonym -> lässt Synonym suchen
         listSynonym.setOnMouseClicked(event -> {
             synonym = listSynonym.getSelectionModel().getSelectedItems().get(0);
             if (event.getClickCount() == 2) {
@@ -124,11 +126,11 @@ public class WikiBooksController {
             buttonClear();
             browser.getEngine().load("https://de.wikibooks.org/wiki/" + synonym);
         });
-
+        // setzt den Index in der Combobox um eine Stelle zurück, wenn der Knopf gedrückt wird
         btnForward.setOnAction(event -> {
             combo.getSelectionModel().select(combo.getSelectionModel().getSelectedIndex() - 1);
         });
-
+        // setzt den Index in der Combobox eine Stelle vorran, wenn der Knopf gedrückt wird
         btnBackward.setOnAction(event -> {
             combo.getSelectionModel().select(combo.getSelectionModel().getSelectedIndex() + 1);
         });
@@ -172,6 +174,7 @@ public class WikiBooksController {
         }
     }
 
+    // vergleicht Medien vom zettelkasten mit data und fügt es dem Zettelkasten hinzu wenn noch nicht vorhanden
     private void add() {
         try {
             zettelkasten.addMedium(wikiBooks);
@@ -191,16 +194,17 @@ public class WikiBooksController {
         try {
             zettelkasten.sort(direction);
             medienList();
-            if (!direction.equals("down")) {
-                direction = "down";
+            if (!direction.equals("ab")) {
+                direction = "ab";
             } else {
-                direction = "up";
+                direction = "auf";
             }
         } catch (Exception e) {
             errorWikiBooks();
         }
     }
 
+    // laut Aufgabenstellung soll nichts passieren
     private void delete() {
         try {
             zettelkasten.dropMedium("q", selectedItemBuch.getTitel());
@@ -232,7 +236,7 @@ public class WikiBooksController {
     private void searchSynonym() {
         try {
             ObservableList<String> liste = synonyme.synonymList(tfSearch.getText());
-            liste.sort(String :: compareTo);
+            liste.sort(String::compareTo);
             listSynonym.getItems().clear();
             if (liste.size() < 1) {
                 listSynonym.getItems().add("<keine>");
@@ -268,6 +272,7 @@ public class WikiBooksController {
         }
     }
 
+    // überprüft den int wordIndex, wenn > 0 ersetzt er 0 mit dem gefundenen wordIndex, wordIndex = tfSearch
     private void comboClear() {
         try {
             int wordIndex = combo.getSelectionModel().getSelectedIndex();
@@ -283,6 +288,7 @@ public class WikiBooksController {
         }
     }
 
+    // Errormeldung für den Zugriff auf Wikibooks
     private void errorWikiBooks() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("");
@@ -290,6 +296,7 @@ public class WikiBooksController {
         alert.showAndWait();
     }
 
+    // Errormeldung für Synonyme
     private void SynonymError() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("");
@@ -297,6 +304,7 @@ public class WikiBooksController {
         alert.showAndWait();
     }
 
+    // ErrorMeldung für die Knöpfe
     private void BtnError() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("");
@@ -306,6 +314,7 @@ public class WikiBooksController {
 
     /**
      * Show info.
+     * gibt die Info Meldung aus
      */
     public void showInfo() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -329,12 +338,14 @@ public class WikiBooksController {
         alert.showAndWait();
     }
 
+    // KeyEvent für F1
     private void btnF1(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.F1) {
             showInfo();
         }
     }
 
+    // vergleicht medium mit dem Array und fügt diesen zur Liste hinzu
     private void medienList() {
         listMedien.getItems().clear();
         for (Medium medium : zettelkasten.getMedium_Arr()) {
@@ -342,6 +353,7 @@ public class WikiBooksController {
         }
     }
 
+    // greift auf WikiBooks zu und setzt letzten Bearbeiter und Änderungszeit, wenn das Medium existiert
     private void setBookInformation(Medium medium) {
         if (medium != null) {
             labelWorker.setText("Letzter Bearbeiter: " + wikiBooks.getVerfasser());

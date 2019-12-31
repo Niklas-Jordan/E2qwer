@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.TimeZone;
 
+/**
+ * The type Wiki books.
+ */
 public class WikiBooks extends Medium implements Serializable {
 
 
@@ -18,82 +21,117 @@ public class WikiBooks extends Medium implements Serializable {
     private String sRegal = null;
     private boolean bIP = false;
 
+    /**
+     * Sets verfasser.
+     *
+     * @param _Verfasser the verfasser
+     */
     @SuppressWarnings("null")
     public void setVerfasser(final String _Verfasser) {
-        if((_Verfasser != null) || (!(_Verfasser.isEmpty())))
+        if ((_Verfasser != null) || (!(_Verfasser.isEmpty())))
             this.Verfasser = _Verfasser;
         else
             throw new IllegalArgumentException();
     }
 
-    //Deklaration
-
+    /**
+     * Gets verfasser.
+     *
+     * @return the verfasser
+     */
     public String getVerfasser() {
         return Verfasser;
     }
 
 
-
-
-
-    // @return the bIP
+    /**
+     * Is ip boolean.
+     *
+     * @return the boolean
+     */
     public boolean isIP() {
         return bIP;
     }
 
-    // @param bIP the bIP to set
 
+    /**
+     * Sets ip.
+     *
+     * @param _bIP the b ip
+     */
     public void setIP(boolean _bIP) {
         this.bIP = _bIP;
     }
 
 
-
-    // @return dAenderungsDatum
+    /**
+     * Gets aenderungs datum.
+     *
+     * @return the aenderungs datum
+     */
     public String getAenderungsDatum() {
         return sAenderungsDatum;
     }
 
 
-
-    //AenderungsDatum the AenderungsDatum to set
+    /**
+     * Sets aenderungs datum.
+     *
+     * @param _sAenderungsDatum the s aenderungs datum
+     */
     public void setAenderungsDatum(String _sAenderungsDatum) {
         this.sAenderungsDatum = _sAenderungsDatum;
     }
 
 
-
-    //@return the arr_Kaptil
+    /**
+     * Gets kapitel.
+     *
+     * @return the kapitel
+     */
     public ArrayList<String> getKapitel() {
         return arr_Kapitel;
     }
 
 
-
-    //@param arr_Kaptil the arr_Kaptil to set
+    /**
+     * Sets kapitel.
+     *
+     * @param _arr_Kapitel the arr kapitel
+     */
     public void setKapitel(ArrayList<String> _arr_Kapitel) {
         this.arr_Kapitel = _arr_Kapitel;
     }
 
-    //@return the sRegal
+    /**
+     * Gets regal.
+     *
+     * @return the regal
+     */
     public String getRegal() {
         return sRegal;
     }
 
-    //@param sRegal the sRegal to set
+    /**
+     * Sets regal.
+     *
+     * @param _sRegal the s regal
+     */
     public void setRegal(String _sRegal) {
         this.sRegal = _sRegal;
     }
 
 
-    /* Konstruktor
+    /**
+     * Instantiates a new Wiki books.
      * Speicherung der übergebenen Daten mittels Setter-Methoden.
-     * @_Titel
-     * @_Erscheinungsjahr
-     * @_Verlag
-     * @_ISBN
-     * @_Verfasser
+     * @param _Titel            the titel
+     * @param _sAenderungsdatum the s aenderungsdatum
+     * @param _sRegal           the s regal
+     * @param _arr_Kapitel      the arr kapitel
+     * @param _Verfasser        the verfasser
      */
+
     public WikiBooks(String _Titel, String _sAenderungsdatum, String _sRegal, ArrayList<String> _arr_Kapitel, String _Verfasser) {
         super(_Titel);
         setRegal(_sRegal);
@@ -102,6 +140,12 @@ public class WikiBooks extends Medium implements Serializable {
         setVerfasser(_Verfasser);
     }
 
+    /**
+     * Convert time string.
+     *
+     * @param _sTime the s time
+     * @return the string
+     */
     public static String convertTime(String _sTime) {
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -126,20 +170,20 @@ public class WikiBooks extends Medium implements Serializable {
 
     }
 
-    /*
-     * calculateRepraesentation
+    /**
+     * Calculate repraesentation string.
      * Ausgabe einer vordefinierten Stringkette
-     *
      * @return StringKette <String> (Titel+ Regal + Kapitel + Änderungungsdatum + Verfasser)
      */
+
     public String calculateRepraesentation() {
-        StringBuilder str =new StringBuilder().append("Titel: \""+ Titel + "\" " +
+        StringBuilder str = new StringBuilder().append("Titel: \"" + Titel + "\" " +
                 "\nRegal: " + sRegal + "\nKapitel:");
         for (String s : arr_Kapitel) {
-            str.append("\n"+s);
+            str.append("\n" + s);
         }
 
-        str.append("\nLetzte Änderung am "+convertTime(sAenderungsDatum));
+        str.append("\nLetzte Änderung am " + convertTime(sAenderungsDatum));
         if (bIP)
             str.append("\nIP: " + Verfasser);
         else
@@ -147,11 +191,9 @@ public class WikiBooks extends Medium implements Serializable {
         return str.toString();
     }
 
-
-
     @Override
     public String calculateRepresentation() {
         // TODO Auto-generated method stub
-        return new String (Titel);
+        return new String(Titel);
     }
 }

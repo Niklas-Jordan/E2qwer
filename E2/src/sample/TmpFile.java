@@ -20,8 +20,9 @@ public class TmpFile {
      * @param _tmp the tmp
      * @return the file
      * @throws IOException the io exception
+     * erstellt tmpFile
+     * geht die Strings durch aus der ArrayList
      */
-
     public File createTmpFile(ArrayList<String> _tmp) throws IOException {
         File datei = File.createTempFile("temp", ".xml");
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(datei), "UTF8"));

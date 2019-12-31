@@ -29,12 +29,8 @@ public class WikiBooksParser {
      * Read from url array list.
      *
      * @param _sSearch the s search
-     * @return the array list
-     * <p>
-     * readFromURL</p> Methode fuer die Verbindung zu einer URL + einlesen des Inputstreams, dabei wird der InputStream in eine ArrayList gespeichert.
-     * _sSearch return throws IOException
+     * @return the array list <p> readFromURL</p> Methode fuer die Verbindung zu einer URL + einlesen des Inputstreams, dabei wird der InputStream in eine ArrayList gespeichert. _sSearch return throws IOException
      */
-
     public ArrayList<String> readFromURL(String _sSearch) {
         ArrayList<String> tmp = new ArrayList<String>();
 
@@ -52,27 +48,21 @@ public class WikiBooksParser {
             while ((line = input.readLine()) != null) {
                 tmp.add(line);
             }
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return tmp;
-
     }
 
     /**
      * Parse medium.
      *
      * @param search the search
-     * @return the medium
-     * parse Methode zum Parsen eine XML Datei -> auf basis von StaxParser param
-     * _sSearch throws IOException
+     * @return the medium parse Methode zum Parsen eine XML Datei -> auf basis von StaxParser param _sSearch throws IOException
      */
-
     public Medium parse(String search) {
 
         boolean bIP = false, isbook = false, bUsername = false, bTimestamp = false, bText = false;
@@ -164,7 +154,6 @@ public class WikiBooksParser {
      * @param _sText the s text
      * @return the string
      */
-
     public String stringParserRegal(StringBuilder _sText) {
         int iPos = 0;
         String sRegal = null;
@@ -189,7 +178,6 @@ public class WikiBooksParser {
      * @param _sText the s text
      * @return the array list
      */
-
     public ArrayList<String> stringParserKapitel(StringBuilder _sText) {
         int iPos = 0, iCount = 0, iCount2 = 1;
         ArrayList<String> arr_Kapitel = new ArrayList<String>();
@@ -215,7 +203,5 @@ public class WikiBooksParser {
             }
         }
         return arr_Kapitel;
-
     }
-
 }
