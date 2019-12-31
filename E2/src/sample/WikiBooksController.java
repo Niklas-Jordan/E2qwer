@@ -7,9 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 
 import java.util.ArrayList;
@@ -23,28 +20,11 @@ public class WikiBooksController {
     private AnchorPane anchorpane;
 
     @FXML
-    private VBox vboxBackground, vboxSynonym, vboxMedienBg, vboxRightBg;
-
-    @FXML
-    private HBox hboxBackground, hboxLeftBg, hboxRightBg, hboxBrowser;
-
-    @FXML
-    private GridPane gridSynomeTopBtn, gridSynonymLabel, gridSynonymList, gridMedienBtn, gridMedienLabel, gridMedienList, gridSearchBrowser, gridBrowserLabel;
-
-    @FXML
-    private MenuBar menuBar;
-
-    @FXML
-    private Menu menuBtn;
-
-    @FXML
     private MenuItem menuItem;
 
     @FXML
     private TextField tfSearch;
 
-    @FXML
-    private Separator separator;
 
     @FXML
     private ComboBox<String> combo;
@@ -203,12 +183,16 @@ public class WikiBooksController {
     }
 
     private void sort() {
-        zettelkasten.sort(direction);
-        medienList();
-        if (!direction.equals("down")) {
-            direction = "down";
-        } else {
-            direction = "up";
+        try {
+            zettelkasten.sort(direction);
+            medienList();
+            if (!direction.equals("down")) {
+                direction = "down";
+            } else {
+                direction = "up";
+            }
+        } catch (Exception e) {
+            errorWikiBooks();
         }
     }
 
@@ -338,7 +322,6 @@ public class WikiBooksController {
         }
     }
 
-    //TODO: Methode noch nicht implementiert
     private void medienList() {
         listMedien.getItems().clear();
         for (Medium medium : zettelkasten.getMedium_Arr()) {
@@ -346,7 +329,6 @@ public class WikiBooksController {
         }
     }
 
-    //TODO: Methode noch nicht implementiert
     private void setBookInformation(Medium medium) {
         if (medium != null) {
             labelWorker.setText("Letzter Bearbeiter: " + wikiBooks.getVerfasser());
