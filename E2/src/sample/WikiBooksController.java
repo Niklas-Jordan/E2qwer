@@ -26,7 +26,6 @@ public class WikiBooksController {
     @FXML
     private TextField tfSearch;
 
-
     @FXML
     private ComboBox<String> combo;
 
@@ -175,7 +174,7 @@ public class WikiBooksController {
             System.out.println("Fehler beim Suchen!");
         }
     }
-
+    // TODO: function does not work rn
     // vergleicht Medien vom zettelkasten mit data und fügt es dem Zettelkasten hinzu wenn noch nicht vorhanden
     private void add() {
         try {
@@ -192,6 +191,7 @@ public class WikiBooksController {
         }
     }
 
+    // TODO: function does not work rn for medienList
     private void sort() {
         try {
             zettelkasten.sort(direction);
@@ -209,6 +209,7 @@ public class WikiBooksController {
     // laut Aufgabenstellung soll nichts passieren
     private void delete() {
         try {
+            btnDelete.setDisable(true);
             zettelkasten.dropMedium("q", selectedItemBuch.getTitel());
             medienList();
         } catch (Exception e) {
@@ -216,7 +217,7 @@ public class WikiBooksController {
         }
     }
 
-    //TODO: Safe and Load function missing; Buttons in fxml need to be added too
+    //TODO: Safe and Load function missing, do not work
     private void save() {
         try {
 
@@ -347,6 +348,7 @@ public class WikiBooksController {
         }
     }
 
+    // TODO: doesn't work rn, need to fix
     // vergleicht medium mit dem Array und fügt diesen zur Liste hinzu
     private void medienList() {
         listMedien.getItems().clear();
@@ -355,6 +357,7 @@ public class WikiBooksController {
         }
     }
 
+    // TODO: doesn't show it in webview rn
     // greift auf WikiBooks zu und setzt letzten Bearbeiter und Änderungszeit, wenn das Medium existiert
     private void setBookInformation(Medium medium) {
         if (medium != null) {
